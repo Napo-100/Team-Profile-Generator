@@ -40,11 +40,12 @@ const employeeQuestions = [
         type: 'input',
         name: 'email',
         message: 'Enter employee email address (required)',
-        validate: emailInput => {
-            if (emailInput) {
+        validate: function(email) {
+            valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+            if (valid) {
                 return true;
             } else {
-                console.log('Please enter an email!');
+                console.log(".  Please enter a valid email!")
                 return false;
             }
         }
