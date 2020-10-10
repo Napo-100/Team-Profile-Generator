@@ -1,9 +1,9 @@
 const inquirer = require('inquirer')
 const fs = require('fs')
 
-const manager = require('./lib/Manager');
-const engineer = require('./lib/Engineer');
-const intern = require('./lib/Intern');
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 
 let team = []
 
@@ -91,14 +91,14 @@ const internQuestion = {
 }
 
 const end = {
-    type: 'validate',
+    type: 'confirm',
     name: 'end',
     message: 'Would you like to enter another employee?',
     default: false
 }
 
 function createEmployee() {
-    inquirer.prompt(employeeQuestions).then(function (answers) {
+    inquirer.prompt(employeeQuestions).then(function(answers) {
         switch (answers.type) {
             case "Manager":
                 createManager(answers)
@@ -113,42 +113,44 @@ function createEmployee() {
     })
 }
 
-function createManager() {
+function createManager(answers) {
     inquirer.prompt(managerQuestion).then(function(manager) {
-        let {name, id, email } = data;
-        let newManager = new manager(name, id, email, manager.officeNumber);
+        let {name, id, email } = answers;
+        let newManager = new Manager(name, id, email, manager.officeNumber);
         team.push(newManager)
         completeTeam();
     })
 }
 
-function createEngineer() {
+function createEngineer(answers) {
     inquirer.prompt(engineerQuestion).then(function(engineer) {
-        let {name, id, email } = data;
-        let newEngineer = new engineer(name, id, email, engineer.gitHub);
+        let {name, id, email } = answers;
+        let newEngineer = new Engineer(name, id, email, engineer.gitHub);
         team.push(newEngineer)
         completeTeam();
     })
 }
 
-function createIntern() {
+function createIntern(answers) {
     inquirer.prompt(internQuestion).then(function(intern) {
-        let {name, id, email } = data;
-        let newIntern = new intern(name, id, email, intern.officeNumber);
+        let {name, id, email } = answers;
+        let newIntern = new Intern(name, id, email, intern.officeNumber);
         team.push(newIntern)
         completeTeam();
     })
 }
 
 function completeTeam() {
-    inquirer.prompt(end).then(function(data) {
-        if (data.end == true) {
+    inquirer.prompt(end).then(function(answers) {
+        if (answers.end == false) {
             renderHTML();
         } else {
             createEmployee();
         }
     })
 }
+
+createEmployee();
 
 function renderHTML(){
 
