@@ -22,7 +22,7 @@ const teamGeneration = (teamProfile) => {
     <div class="card" style="width: 18rem;">
     <div class="card-body text-white bg-primary">
       <h5 class="card-title">${engineer.getName()}</h5>
-      <p class="card-text engineer"><i class="fas fa-address-card"></i> Engineer</p>
+      <p class="card-text engineer"><i class="fas fa-atom"></i> Engineer</p>
     </div>
     <div class="card-body bg-light">
     <ul class="list-group list-group-flush">
@@ -39,7 +39,7 @@ const teamGeneration = (teamProfile) => {
     <div class="card" style="width: 18rem;">
     <div class="card-body text-white bg-primary">
       <h5 class="card-title">${intern.getName()}</h5>
-      <p class="card-text intern"><i class="fas fa-address-card"></i> Intern</p>
+      <p class="card-text intern"><i class="fas fa-user-graduate"></i> Intern</p>
     </div>
     <div class="card-body bg-light">
     <ul class="list-group list-group-flush">
@@ -98,8 +98,10 @@ module.exports = teamProfile => {
       </nav>
 
       <div class="container">
-      <div class="d-flex justify-content-around"> 
+      <div class="d-lg-flex justify-content-around"> 
+      <div class="card-columns">
           ${teamGeneration(teamProfile)}
+        </div>
       </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">
