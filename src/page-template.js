@@ -1,6 +1,5 @@
-function generateHTML() {
-    
-    return `
+
+return `
     <!DOCTYPE html>
     <html lang="en">
   
@@ -21,6 +20,3 @@ function generateHTML() {
     </body>
     </html>
     `;
-  };
-
-  module.exports = generateHTML;
