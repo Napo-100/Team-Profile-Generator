@@ -11,7 +11,7 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
-let team = []
+let teamProfile = []
 
 const employeeQuestions = [
     {
@@ -133,7 +133,7 @@ function createManager(answers) {
     inquirer.prompt(managerQuestion).then(function (manager) {
         let { name, id, email } = answers;
         let newManager = new Manager(name, id, email, manager.officeNumber);
-        team.push(newManager)
+        teamProfile.push(newManager)
         completeTeam();
     })
 }
@@ -142,7 +142,7 @@ function createEngineer(answers) {
     inquirer.prompt(engineerQuestion).then(function (engineer) {
         let { name, id, email } = answers;
         let newEngineer = new Engineer(name, id, email, engineer.gitHub);
-        team.push(newEngineer)
+        teamProfile.push(newEngineer)
         completeTeam();
     })
 }
@@ -150,8 +150,8 @@ function createEngineer(answers) {
 function createIntern(answers) {
     inquirer.prompt(internQuestion).then(function (intern) {
         let { name, id, email } = answers;
-        let newIntern = new Intern(name, id, email, intern.officeNumber);
-        team.push(newIntern)
+        let newIntern = new Intern(name, id, email, intern.school);
+        teamProfile.push(newIntern)
         completeTeam();
     })
 }
@@ -167,10 +167,10 @@ function completeTeam() {
 }
 
 function renderHTML() {
-    if(!fs.existsSync(outputDir)) {
-        fs.mkdirSync(outputDir);
+    if(!fs.existsSync(renderDir)) {
+        fs.mkdirSync(renderDir);
     }
-    fs.writeFileSync(renderPath, pageTemplate(team), "utf-8");
+    fs.writeFileSync(renderPath, pageTemplate(teamProfile), "utf-8");
 };
 
 createEmployee();
