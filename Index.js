@@ -2,6 +2,11 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const path = require("path");
 
+const renderDir = path.resolve(__dirname, "dist");
+const renderPath = path.resolve(renderDir, "index.html");
+
+const pageTemplate = require("./src/page-template");
+
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
@@ -161,8 +166,11 @@ function completeTeam() {
     })
 }
 
-createEmployee();
-
 function renderHTML() {
+    if(!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir);
+    }
+    fs.writeFileSync(renderPath, pageTemplate(team), "utf-8");
+};
 
-}
+createEmployee();
