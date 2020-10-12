@@ -160,7 +160,7 @@ function completeTeam() {
     inquirer.prompt(end).then(function (answers) {
         if (answers.end == false) {
             renderHTML();
-            console.log("You created your team! Congratulations!")
+            console.log("You created your team! Congratulations! Checkout Index.HTML")
         } else {
             createEmployee();
         }
