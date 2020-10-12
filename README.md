@@ -26,6 +26,7 @@
 
    ## Usage 
   run 'node index' in root directory
+   ### <a href="https://drive.google.com/file/d/1tVBm-qWy-iV4m4-ghkfKIfTXcmjPjFmN/view">Video Demo</a>
 
    ## Credits  
   Inquirer, Jest, Boostrap 
