@@ -58,18 +58,21 @@ const teamGeneration = (teamProfile) => {
     teamProfile
       .filter((employee) => employee.getRole() === "Manager")
       .map((manager) => managerCard(manager))
+      .join("")
   );
 
   teamCard.push(
     teamProfile
       .filter((employee) => employee.getRole() === "Engineer")
       .map((engineer) => engineerCard(engineer))
+      .join("")
   );
 
   teamCard.push(
     teamProfile
       .filter((employee) => employee.getRole() === "Intern")
       .map((intern) => internCard(intern))
+      .join("")
   );
 
   return teamCard.join("");
